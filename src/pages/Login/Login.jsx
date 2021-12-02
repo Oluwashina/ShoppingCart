@@ -61,7 +61,7 @@ const LoginPage = () => {
                         <input
                           className="form-control input-style"
                           type="email"
-                          placeholder="Your Email"
+                          placeholder="Example@email.com"
                           id="email"
                           onBlur={handleBlur}
                           onChange={handleChange}
