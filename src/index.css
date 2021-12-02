@@ -4,11 +4,11 @@ html{
 
 
 body {
-  font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+  font-family: 'Montserrat',sans-serif;;
 }
 
-/* container styles */
-.container{
+/* my container styles  */
+.contain{
   width: 100%;
   margin-left: auto;
   margin-right: auto;
@@ -18,13 +18,13 @@ body {
 
 
 @media (min-width: 640px) {
-  .container {
+  .contain {
     max-width: 640px;
   }
 }
 
 @media (min-width: 768px) {
-  .container {
+  .contain {
     padding-left: 3rem;
     padding-right: 3rem;
     max-width: 768px;
@@ -34,20 +34,26 @@ body {
 
 
 @media (min-width: 1024px) {
-  .container {
+  .contain {
     max-width: 1024px;
   }
 }
 
 @media (min-width: 1280px) {
-  .container {
+  .contain {
     max-width: 1280px;
   }
 }
 
 @media (min-width: 1536px) {
-  .container {
+  .contain {
     max-width: 1536px;
   }
 }
 
+
+.btn:focus,
+.btn:active {
+  outline: none !important;
+  box-shadow: none;
+}

@@ -1,0 +1,114 @@
+
+/* --- Login Styles ------------- */
+/* Screens generally -- mobile specific */
+
+.input-container label{
+    font-size: 14px;
+    color: #4F4F4F;
+}
+
+.input-style {
+  border: 1px solid rgba(1, 34, 101, 0.2);
+    border-radius: 8px;
+    padding: 22px 20px;
+    background: #fff;
+    font-size: 15px;
+    color: rgba(0, 0, 0, 0.5);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.input-style:focus {
+    border: 1px solid #ced4da;
+    box-shadow: none;
+    outline: 0 none;
+}
+
+.toggle-style{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 1rem;
+  cursor: pointer;
+  color: #989898;
+  font-size: 18px;
+}
+
+
+.btn-login_submit{
+    color: #fff;
+    border-radius: 8px;
+    background: #6F7888;
+    padding: 12px 30px;
+    transition: all 0.15s ease-in-out;
+    font-weight: bold;
+    width: 100%;
+}
+
+.btn-login_submit:hover{
+    color: white;
+}
+
+.login_link{
+    color: rgba(0, 0, 0, 0.7);
+    font-size: 14px;
+}
+
+.login_link a{
+      color: #4B84E5;
+      text-decoration: none;
+}
+
+.login-heading h3{
+    font-weight: bold;
+}
+
+.login-section{
+     margin-top: 70px;
+ }
+
+
+/* ------------------MEDIA QUERY SECTION ------------------------- */
+/* Media query for tablets and screens higher */
+@media (min-width: 768px) {
+
+.login_bg{
+    background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.5)), url(../assets/images/loginbg.png);
+    background-size: cover;
+    position: relative;
+    border-radius: 20px;
+    min-height: 100vh;
+}   
+
+.login_bg_text{
+    color: #fff;
+    position: absolute;
+    top: 25%;
+    left: 10%;
+    max-width: 300px;
+}
+.login_bg_text h1{
+    font-size: 3rem;
+    font-weight: bold;
+    line-height: 60px;
+ }
+
+ .login-section{
+     max-width: 30rem;
+     margin: auto;
+     margin-top: 70px;
+ }
+ 
+}
+
+
+/* sreens higher than tablets */
+@media (min-width: 1024px) {
+}
+
+/* large screens */
+@media (min-width: 1536px) {
+
+}
