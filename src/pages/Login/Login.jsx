@@ -2,10 +2,12 @@ import React,{useState} from "react";
 import "../../styles/login.css"
 import { Form, Formik } from "formik";
 import { loginValidator } from "../../validationSchema/validator";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
   const [passwordShown, setPasswordShown] = useState(false);
+
+  const navigate = useNavigate()
 
   const togglePasswordVisiblity = () => {
     setPasswordShown(passwordShown ? false : true);
@@ -15,6 +17,7 @@ const LoginPage = () => {
   const handleSubmit = async (values) => {
     // await console.log(values)
     console.log(values)
+    navigate("/cart");
   };
 
   return (

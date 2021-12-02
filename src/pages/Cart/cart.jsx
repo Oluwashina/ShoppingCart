@@ -2,18 +2,25 @@ import React, { useEffect, useState } from "react";
 import "../../styles/cart.css";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { DecrementQty, deleteCart, getCartItems, IncrementQty } from "../../store/actions/cart";
+import {
+    createOrder,
+  DecrementQty,
+  deleteCart,
+  getCartItems,
+  IncrementQty,
+} from "../../store/actions/cart";
+import Modal from "../../components/ModalComponents/Modal";
 
 const CartPage = ({
   fetchItems,
   items,
-  subTotal,
   deleteItem,
   incrementQty,
   DecrementQty,
+  checkout,
 }) => {
-
-    const [totalPrice, setTotalPrice] = useState(0);
+  const [totalPrice, setTotalPrice] = useState(0);
+  const [showModal, setOrderModal] = useState(false);
 
   useEffect(() => {
     document.body.classList.add("cartpage-bg");
@@ -31,20 +38,26 @@ const CartPage = ({
     incrementQty(id);
   };
 
-    const handleDecrement = (id) => {
-      DecrementQty(id)
-    };
-    
-    // to update subtotal value when the quantity is increased or decreased
-      useEffect(() => {
-        let price = 0;
+  const handleDecrement = (id) => {
+    DecrementQty(id);
+  };
 
-        items.forEach((item) => {
-          price += item.quantity * parseFloat(item.price);
-        });
+  // to update subtotal value when the quantity is increased or decreased
+  useEffect(() => {
+    let price = 0;
 
-        setTotalPrice(price);
-      }, [items, totalPrice, setTotalPrice]);
+    items.forEach((item) => {
+      price += item.quantity * parseFloat(item.price);
+    });
+
+    setTotalPrice(price);
+  }, [items, totalPrice, setTotalPrice]);
+
+  const handleCheckout = () => {
+    // make api call to create order
+    // checkout(totalPrice);
+    setOrderModal(true);
+  };
 
   return (
     <>
@@ -52,6 +65,30 @@ const CartPage = ({
         <div className="cart-heading">
           <h5>Shopping Cart</h5>
         </div>
+
+        {/* Modal for successful order placed */}
+        <Modal
+          title="Payment Successful"
+          show={showModal}
+          onClose={() => setOrderModal(false)}
+        >
+          <div className="text-center mt-3">
+            <p>
+              Your order has been received and will be delivered to you in no
+              time!!
+            </p>
+          </div>
+          <div className="text-center mt-5">
+            <button
+              type="submit"
+              className="btn btn-checkout"
+              style={{ fontWeight: "normal" }}
+            >
+              Continue Shopping
+            </button>
+          </div>
+        </Modal>
+        {/* end of modal for order success */}
 
         {/* cart section with card details */}
         <div className="row mt-4">
@@ -212,7 +249,11 @@ const CartPage = ({
 
               {/* checkout button */}
               <div className="mt-5">
-                <button type="submit" className="btn btn-checkout">
+                <button
+                  type="submit"
+                  onClick={handleCheckout}
+                  className="btn btn-checkout"
+                >
                   Checkout
                 </button>
               </div>
@@ -226,8 +267,7 @@ const CartPage = ({
 
 const mapStateToProps = (state) => {
   return {
-      items: state.cart.cartItems,
-      subTotal: state.cart.subTotal
+    items: state.cart.cartItems,
   };
 };
 
@@ -236,7 +276,8 @@ const mapDispatchToProps = (dispatch) => {
     fetchItems: () => dispatch(getCartItems()),
     deleteItem: (id) => dispatch(deleteCart(id)),
     incrementQty: (id) => dispatch(IncrementQty(id)),
-    DecrementQty: (id) => dispatch(DecrementQty(id))
+    DecrementQty: (id) => dispatch(DecrementQty(id)),
+    checkout: (val) => dispatch(createOrder(val)),
   };
 };
 
