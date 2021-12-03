@@ -1,23 +1,39 @@
 # Shopping Cart
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a shopping cart implementation where a user can see the list of items in their cart and make an adjustment to the items before placing an order.
 
-## Available Scripts
+# Demo link
 
-In the project directory, you can run:
+You can access this site at [Shopping Cart](https://crop2cashcart.netlify.app/)
+
+# Setup
+
+. Download or clone the repository
+. run npm install
+
+## Installation and Setup Instructions
+
+Clone this repository. You will need node and npm installed globally on your machine.
+
+Installation:
+
+### `npm install`
+
+To run Test Suite:
+
+### `npm test`
+
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
+
+To Start Server
 
 ### `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 ### `npm build`
 
