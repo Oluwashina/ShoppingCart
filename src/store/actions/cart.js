@@ -6,7 +6,7 @@ export const getCartItems = () => {
   return async (dispatch, getState) => {
     dispatch({ type: "startLoader" })
     try {
-      const res = await GetApi("list_items","");
+      const res = await GetApi("list_items");
       if (res.status === 200) {
         console.log(res.data);
         dispatch({ type: "stopLoader" });
@@ -60,7 +60,7 @@ export const createOrder = (val) => {
     };
 
     try {
-      const res = await PostApi(`create_order`, { ...result }, "", "application/json");
+      const res = await PostApi(`create_order`, { ...result }, "application/json");
       if (res.status === 201) {
         dispatch({ type: "Order_Success", data: res.data });
         cogoToast.success("Order received!", {

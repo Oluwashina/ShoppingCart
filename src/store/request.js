@@ -2,14 +2,15 @@ import axios from "axios";
 import { apiUrl } from "./config";
 import { store } from "../index";
 
-// post request funcionality
-export const PostApi = async (url, payload, token, contentType) => {
+// post request functionality
+export const PostApi = async (url, payload, contentType) => {
   try {
     const data = await axios.post(apiUrl + `${url}`, payload, {
       headers: {
         Accept: "application/json",
-        Authorization: token,
         contentType: contentType,
+        "Origin": "http://localhost:3000",
+        "Access-Control-Allow-Origin": "*",
       },
     });
     return {
@@ -35,12 +36,11 @@ export const PostApi = async (url, payload, token, contentType) => {
 };
 
 // get request functionality
-export const GetApi = async (url, token) => {
+export const GetApi = async (url) => {
   try {
     const data = await axios.get(apiUrl + `${url}`, {
       headers: {
         Accept: "application/json",
-        Authorization: token,
       },
     });
     return {
