@@ -6,14 +6,10 @@ This is a shopping cart implementation where a user can see the list of items in
 
 You can access this site at [Shopping Cart](https://crop2cashcart.netlify.app/)
 
-# Setup
-
-. Download or clone the repository
-. run npm install
 
 ## Installation and Setup Instructions
 
-Clone this repository. You will need node and npm installed globally on your machine.
+Clone this repository. You will need ### `node` and ### `npm` installed globally on your machine.
 
 Installation:
 
