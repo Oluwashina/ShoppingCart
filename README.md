@@ -9,7 +9,7 @@ You can access this site at [Shopping Cart](https://crop2cashcart.netlify.app/)
 
 ## Installation and Setup Instructions
 
-Clone this repository. You will need ### `node` and ### `npm` installed globally on your machine.
+Clone this repository. You will need `node` and `npm` installed globally on your machine.
 
 Installation:
 
