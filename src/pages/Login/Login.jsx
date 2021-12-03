@@ -15,7 +15,6 @@ const LoginPage = () => {
 
   // login func
   const handleSubmit = async (values) => {
-    // await console.log(values)
     console.log(values)
     navigate("/cart");
   };

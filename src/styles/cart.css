@@ -92,7 +92,7 @@
 .price{
     flex-basis: 30%;
     text-align: center;
-    margin: 8px 0;
+    margin: 15px 0 0 0;
 }
 
 .close-icon{
@@ -122,6 +122,9 @@
   color: #ced4da;
 }
 .checkout-input {
+-webkit-appearance: none;
+-moz-appearance: none;
+appearance: none;
   width: 100%;
   border-bottom: 1px solid #6d6e71;
   border-top: none;
@@ -133,6 +136,10 @@
   font-size: 14px;
 }
 
+.checkout-input.card-num{
+    font-size: 20px;
+}
+
 .checkout-input:focus {
   border-bottom: 1px solid #ced4da;
   box-shadow: none;
@@ -140,6 +147,9 @@
   border-top: none;
   border-left: none;
   border-right: none;
+  -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 }
 
 .btn-checkout {
@@ -201,6 +211,11 @@
         border-radius: 8px;
         max-width: 300px;
         margin: auto;
+    }
+    .price{
+        flex-basis: 30%;
+        text-align: center;
+        margin: 0px;
     }
 }
 

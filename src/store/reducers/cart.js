@@ -1,10 +1,21 @@
 const initState = {
   cartItems: [],
   itemsLength: 0,
+  loading: false
 };
 
 const cartReducer = (state = initState, action) => {
   switch (action.type) {
+    case "startLoader":
+      return {
+        ...state,
+        loading: true
+      }
+    case "stopLoader":
+      return {
+        ...state,
+        loading: false
+      }
     case "cartItems":
       // map a new cart items array with quantity field added;
       var newCartItems = action.data.results.map((val) => ({

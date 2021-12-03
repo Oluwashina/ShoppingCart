@@ -4,13 +4,16 @@ import cogoToast from "cogo-toast";
 // get cart items with limit and offset
 export const getCartItems = () => {
   return async (dispatch, getState) => {
+    dispatch({ type: "startLoader" })
     try {
       const res = await GetApi("list_items","");
       if (res.status === 200) {
         console.log(res.data);
+        dispatch({ type: "stopLoader" });
         dispatch({ type: "cartItems", data: res.data });
       }
       if (res.status === 400) {
+         dispatch({ type: "stopLoader" });
         dispatch({ type: "cart_Error", err: res.data });
       }
     } catch (err) {
@@ -55,8 +58,6 @@ export const createOrder = (val) => {
       order_item: orderItem,
       total_order_cost: val
     };
-
-    console.log(result)
 
     try {
       const res = await PostApi(`create_order`, { ...result }, "", "application/json");
