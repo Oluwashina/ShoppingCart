@@ -12,6 +12,7 @@ import {
   IncrementQty,
 } from "../../store/actions/cart";
 import Modal from "../../components/ModalComponents/Modal";
+import Pagination from "../../components/PaginationComponent/Pagination";
 
 const CartPage = ({
   fetchItems,
@@ -21,6 +22,7 @@ const CartPage = ({
   DecrementQty,
   checkout,
   loading,
+  itemsLength,
 }) => {
   const [totalPrice, setTotalPrice] = useState(0);
   const [showModal, setOrderModal] = useState(false);
@@ -30,7 +32,8 @@ const CartPage = ({
   }, []);
 
   useEffect(() => {
-    fetchItems();
+    let offset = 0;
+    fetchItems(offset);
   }, [fetchItems]);
 
   const handleDelete = (id) => {
@@ -62,6 +65,18 @@ const CartPage = ({
     await checkout(totalPrice);
     await setOrderModal(true);
   };
+
+  let PageSize = 3;
+
+  const [currentPage, setCurrentPage] = useState(1);
+
+  // fetch cart data for pagination selected
+  const getMoreItemsByOffset = (page) => {
+    setCurrentPage(page)
+    // fetch cart items based on the page selected
+    const offset = (page - 1) * PageSize;
+    fetchItems(offset)
+  }
 
   return (
     <>
@@ -150,13 +165,19 @@ const CartPage = ({
               {/* cart footer -- total and pagination */}
               <div className="cart-footer">
                 <div style={{ display: "flex" }}>
-                  <i className="mdi mdi-arrow-left"></i>
+                  <i className="mdi mdi-arrow-left-thin"></i>
                   <Link to="/" className="continue-shop">
                     Continue Shopping
                   </Link>
                 </div>
                 <div>
-                  <p>1</p>
+                  {/* pagination section */}
+                  <Pagination
+                    currentPage={currentPage}
+                    totalCount={itemsLength}
+                    pageSize={PageSize}
+                    onPageChange={(page) => getMoreItemsByOffset(page)}
+                  />
                 </div>
                 <div className="subtotal">
                   <small className="mt-1">Subtotal</small>
@@ -344,12 +365,13 @@ const mapStateToProps = (state) => {
   return {
     items: state.cart.cartItems,
     loading: state.cart.loading,
+    itemsLength: state.cart.itemsLength
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchItems: () => dispatch(getCartItems()),
+    fetchItems: (val) => dispatch(getCartItems(val)),
     deleteItem: (id) => dispatch(deleteCart(id)),
     incrementQty: (id) => dispatch(IncrementQty(id)),
     DecrementQty: (id) => dispatch(DecrementQty(id)),

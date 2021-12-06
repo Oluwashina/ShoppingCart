@@ -2,11 +2,11 @@ import { GetApi, PostApi } from "../request";
 import cogoToast from "cogo-toast";
 
 // get cart items with limit and offset
-export const getCartItems = () => {
+export const getCartItems = (val) => {
   return async (dispatch, getState) => {
     dispatch({ type: "startLoader" })
     try {
-      const res = await GetApi("list_items");
+      const res = await GetApi(`list_items?limit=3&offset=${val}`);
       if (res.status === 200) {
         console.log(res.data);
         dispatch({ type: "stopLoader" });
@@ -21,6 +21,7 @@ export const getCartItems = () => {
     }
   };
 };
+
 
 // delete cart
 export const deleteCart = (id) => {
