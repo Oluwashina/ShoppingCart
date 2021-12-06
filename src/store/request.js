@@ -8,11 +8,6 @@ export const PostApi = async (url, payload, contentType) => {
     const data = await axios.post(apiUrl + `${url}`, payload, {
       headers: {
         Accept: "application/json",
-        contentType: contentType,
-        "Origin": "http://localhost:3000",
-        "Access-Control-Allow-Origin": "http://localhost:3000",
-        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-        'Access-Control-Allow-Headers': 'Content-Type'
       },
     });
     return {

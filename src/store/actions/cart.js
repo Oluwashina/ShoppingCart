@@ -61,7 +61,7 @@ export const createOrder = (val) => {
     };
 
     try {
-      const res = await PostApi(`create_order`, { ...result }, "application/json");
+      const res = await PostApi(`create_order/`, { ...result });
       if (res.status === 201) {
         dispatch({ type: "Order_Success", data: res.data });
         cogoToast.success("Order received!", {
